@@ -1,7 +1,7 @@
 import React, {createContext, useContext, useState} from 'react'
 import {FC} from 'react'
 
-const SliderContext = createContext({});
+export const SliderContext = createContext({});
 
  const SliderProvider: FC<{children: any}> = ({children}) => {
     const [value, setValue] = useState(0)
@@ -13,4 +13,3 @@ const SliderContext = createContext({});
     )
 }
 
-export default SliderProvider
