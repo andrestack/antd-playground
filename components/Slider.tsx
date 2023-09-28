@@ -15,7 +15,7 @@ const SliderComponent: React.FC = () => {
       <Col span={10}>
         <Slider
           min={0}
-          max={24}
+          max={100}
           onChange={handleInputChange}
           value={typeof value === "number" ? value : 0}
         />
