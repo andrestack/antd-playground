@@ -1,5 +1,6 @@
 import {SliderContext} from '../context/SliderContext';
 import {useContext} from 'react';
+import FC from 'react';
 
 export const useSlider = () => {
     const context = useContext(SliderContext);
