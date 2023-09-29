@@ -2,22 +2,23 @@ import { Progress, ConfigProvider } from "antd";
 import { FC } from "react";
 import { useSlider } from "../hooks/useSlider";
 
-const ProgressBar: FC<{ hours: any }> = ({ hours }) => {
+const ProgressBar: FC = () => {
   // const percentage = Math.round((hours / 24) * 100);
-  const { value } = useSlider();
-  
+  const { sleeping, eating, working } = useSlider();
+  const totalHours = sleeping + eating + working;
+
   let color;
-  if (value < 8) {
-    color = "none";
-  } else if (value < 16) {
+  if (totalHours < 8) {
+    color = "green";
+  } else if (totalHours < 16) {
     color = "yellow";
-  } else if (value < 24) {
+  } else if (totalHours < 24) {
     color = "orange";
   }
 
   return (
     <div className="items-center">
-      {/* <ConfigProvider
+      <ConfigProvider
         theme={{
           components: {
             Progress: {
@@ -25,17 +26,30 @@ const ProgressBar: FC<{ hours: any }> = ({ hours }) => {
             },
           },
         }}
-      > */}
-        <Progress
-          data-testid="time-24"
-          type="circle"
-          percent={value}
-          success={{ percent: value }}
-          strokeColor={color}
-          
-        />
-      
-      {/* </ConfigProvider> */}
+      >
+      <Progress
+        data-testid="progress-bar"
+        type="circle"
+        percent={totalHours}
+        success={{ percent: totalHours }}
+        strokeColor={color}
+      />
+      <Progress
+        data-testid="progress-bar"
+        type="circle"
+        percent={totalHours}
+        success={{ percent: totalHours }}
+        strokeColor={color}
+      />
+      <Progress
+        data-testid="progress-bar"
+        type="circle"
+        percent={totalHours}
+        success={{ percent: totalHours }}
+        strokeColor={color}
+      />
+
+      </ConfigProvider>
     </div>
   );
 };
