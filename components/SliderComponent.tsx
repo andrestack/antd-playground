@@ -20,10 +20,11 @@ const SliderComponent: React.FC<{activity: 'sleeping'| 'eating'| 'working'}> = (
     <Row className="p-10">
       <Col span={6}>
         <Slider
+        
           min={0}
           max={24}
           onChange={handleInputChange}
-          value={typeof value === "number" ? value : 0}
+          value={value}
         />
       </Col>
       <Col span={6}>
@@ -40,7 +41,5 @@ const SliderComponent: React.FC<{activity: 'sleeping'| 'eating'| 'working'}> = (
 };
 
 export default SliderComponent;
-function capitalize(activity: string) {
-  throw new Error("Function not implemented.");
-}
+
 

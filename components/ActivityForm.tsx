@@ -1,3 +1,4 @@
+
 import ProgressBar from "./ProgressBar";
 import SliderComponent from "./SliderComponent";
 import { useState } from "react";
@@ -8,7 +9,8 @@ const ActivityForm = () => {
       <SliderComponent activity="sleeping" />
       <SliderComponent activity="eating" />
       <SliderComponent activity="working" />
-      <ProgressBar />
+      <ProgressBar hours={0} />
+      
     </>
   );
 };
