@@ -16,8 +16,8 @@ const ProgressBar: FC<{ hours: any }> = ({ hours }) => {
   }
 
   return (
-    <>
-      <ConfigProvider
+    <div className="items-center">
+      {/* <ConfigProvider
         theme={{
           components: {
             Progress: {
@@ -25,17 +25,18 @@ const ProgressBar: FC<{ hours: any }> = ({ hours }) => {
             },
           },
         }}
-      >
+      > */}
         <Progress
           data-testid="time-24"
           type="circle"
           percent={value}
           success={{ percent: value }}
           strokeColor={color}
+          
         />
       
-      </ConfigProvider>
-    </>
+      {/* </ConfigProvider> */}
+    </div>
   );
 };
 

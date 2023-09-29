@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Col, InputNumber, Row, Slider, Space } from "antd";
 import { useSlider } from "../hooks/useSlider"
 
-const SliderComponent: React.FC = () => {
-  const { value, setValue } = useSlider();
+const SliderComponent: React.FC<{activity: 'sleeping'| 'eating'| 'working'}> = ({activity}) => {
+  const { [activity]: value, [`set${capitalize(activity)}`]: setValue } = useSlider();
 
 
   const handleInputChange = (newValue: number | null) => {
@@ -11,7 +11,7 @@ const SliderComponent: React.FC = () => {
   };
 
   return (
-    <Row>
+    <Row className="p-10">
       <Col span={6}>
         <Slider
           min={0}
@@ -34,3 +34,7 @@ const SliderComponent: React.FC = () => {
 };
 
 export default SliderComponent;
+function capitalize(activity: string) {
+  throw new Error("Function not implemented.");
+}
+
