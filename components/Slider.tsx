@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Col, InputNumber, Row, Slider, Space } from "antd";
-import { useSlider } from "../context/SliderContext"
+import { useSlider } from "../hooks/useSlider"
 
 const SliderComponent: React.FC = () => {
   const { value, setValue } = useSlider();
@@ -12,7 +12,7 @@ const SliderComponent: React.FC = () => {
 
   return (
     <Row>
-      <Col span={10}>
+      <Col span={6}>
         <Slider
           min={0}
           max={100}
@@ -20,7 +20,7 @@ const SliderComponent: React.FC = () => {
           value={typeof value === "number" ? value : 0}
         />
       </Col>
-      <Col span={4}>
+      <Col span={6}>
         <InputNumber
           min={0}
           max={24}

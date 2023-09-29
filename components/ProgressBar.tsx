@@ -1,6 +1,6 @@
 import { Progress, ConfigProvider } from "antd";
 import { FC } from "react";
-import { useSlider } from "../context/SliderContext";
+import { useSlider } from "../hooks/useSlider";
 
 const ProgressBar: FC<{ hours: any }> = ({ hours }) => {
   // const percentage = Math.round((hours / 24) * 100);

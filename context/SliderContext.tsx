@@ -20,10 +20,10 @@ export const SliderProvider: FC<{ children: any }> = ({ children }) => {
   );
 };
 
-export const useSlider = () => {
-  const context = useContext(SliderContext);
-  if (context === undefined) {
-    throw new Error("useSlider must be used within a SliderProvider");
-  }
-  return context;
-};
+// export const useSlider = () => {
+//   const context = useContext(SliderContext);
+//   if (context === undefined) {
+//     throw new Error("useSlider must be used within a SliderProvider");
+//   }
+//   return context;
+// };
