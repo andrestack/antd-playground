@@ -1,5 +1,5 @@
 import React from "react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useSlider } from "../hooks/useSlider";
 
@@ -12,24 +12,60 @@ export const ProgressBarCopilot: React.FC = () => {
   const totalHoursPercentage = Math.round((totalHours / 24) * 100);
 
   const styles = buildStyles({
-    pathColor: `linear-gradient(to right, #ff0000 ${sleepingPercentage}%, #00ff00 ${sleepingPercentage}% ${
-      sleepingPercentage + eatingPercentage
-    }%, #0000ff ${sleepingPercentage + eatingPercentage}% ${
-      sleepingPercentage + eatingPercentage + workingPercentage
-    }%, #ff0000 ${
-      sleepingPercentage + eatingPercentage + workingPercentage
-    }% ${totalHoursPercentage}%, #fff ${totalHoursPercentage}% )`,
-    trailColor: "#d6d6d6",
+    // pathColor: `linear-gradient(to right, red ${sleepingPercentage}%, red ${sleepingPercentage}% ${
+    //   sleepingPercentage + eatingPercentage
+    // }%, orange ${sleepingPercentage + eatingPercentage}% ${
+    //   sleepingPercentage + eatingPercentage + workingPercentage
+    // }%, green ${
+    //   sleepingPercentage + eatingPercentage + workingPercentage
+    // }% ${totalHoursPercentage}%, #purple ${totalHoursPercentage}% )`,
+    pathColor: `${
+      sleepingPercentage
+        ? "purple"
+        : eatingPercentage
+        ? "orange"
+        : workingPercentage
+        ? "green"
+        : "none"
+    }`,
+    trailColor: "lightgrey",
     strokeLinecap: "butt",
   });
 
   return (
-    <div className="flex justify-center items-center w-20">
-      <CircularProgressbar
+    // <div className="w-10 h-10">
+    //   <CircularProgressbarWithChildren
+    //     className="w-10 h-10"
+    //     value={totalHoursPercentage}
+    //     text={`${totalHours}h left`}
+    //     styles={styles}
+    //   />
+    // </div>
+    <CircularProgressbarWithChildren
         value={totalHoursPercentage}
-        text={`${totalHours}h`}
-        styles={styles}
-      />
-    </div>
+        styles={buildStyles({
+            pathColor: `${
+                sleepingPercentage
+                  ? "purple"
+                  : eatingPercentage
+                  ? "orange"
+                  : workingPercentage
+                  ? "green"
+                  : "none"
+              }`,
+              trailColor: "lightgrey",
+              strokeLinecap: "butt",
+        })}
+      >
+        {/* Foreground path */}
+        <CircularProgressbar
+          value={totalHoursPercentage}
+          styles={buildStyles({
+            trailColor: "transparent",
+            strokeLinecap: "butt"
+          })}
+          text={`${totalHours}`}
+        />
+      </CircularProgressbarWithChildren>
   );
 };
